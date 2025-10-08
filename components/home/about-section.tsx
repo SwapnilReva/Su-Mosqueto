@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import { Shield, Award, Leaf, CheckCircle, Users } from "lucide-react"
+import Image from "next/image"
+import landscapeWindow from "@/public/images/landscape-window.jpg"
 
 const features = [
   {
@@ -31,21 +33,21 @@ const features = [
 
 const stats = [
   { number: "15+", label: "Years Experience" },
-  { number: "10,000+", label: "Happy Customers" },
+  { number: "1,000+", label: "Happy Customers" },
   { number: "50+", label: "Cities Served" },
   { number: "99%", label: "Satisfaction Rate" },
 ]
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-16 bg-gradient-to-br from-slate-50 via-stone-100 to-amber-50">
+    <section id="about" className="cv-section py-16 bg-gradient-to-br from-slate-50 via-stone-100 to-amber-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.6, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-20"
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
@@ -63,10 +65,10 @@ export default function AboutSection() {
 
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.7, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
         >
           {stats.map((stat, index) => (
@@ -80,11 +82,11 @@ export default function AboutSection() {
         {/* Features Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0.7, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="space-y-8 transform-gpu will-change-transform"
           >
             {features.map((feature, index) => {
               const IconComponent = feature.icon
@@ -98,10 +100,10 @@ export default function AboutSection() {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0.7, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: Math.min(index * 0.08, 0.24), ease: "easeOut" }}
                   className="flex items-start space-x-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50"
                 >
                   <div className={`p-3 rounded-xl ${colorClasses[feature.color]}`}>
@@ -117,16 +119,18 @@ export default function AboutSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0.7, x: 18 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="relative transform-gpu will-change-transform"
           >
-            <img
-              src="/images/landscape-window.jpg"
+            <Image
+              src={landscapeWindow}
               alt="Premium Interior with Mosquito Net"
-              className="rounded-3xl shadow-2xl w-full"
+              placeholder="blur"
+              sizes="(min-width: 1024px) 600px, 100vw"
+              className="rounded-3xl shadow-2xl w-full h-auto"
             />
             <div className="absolute -bottom-8 -left-8 bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-6 rounded-2xl shadow-xl">
               <div className="flex items-center space-x-3">

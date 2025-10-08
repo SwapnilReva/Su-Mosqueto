@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
 import { ArrowDown, Shield, Star, Award } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
 import heroCity from "@/public/images/hero-city.png"
 import womanReading from "@/public/images/woman-reading.jpg"
@@ -9,8 +9,16 @@ import womanReading from "@/public/images/woman-reading.jpg"
 export default function HeroSection() {
   const [scrollY, setScrollY] = useState(0)
   const ticking = useRef(false)
+  const prefersReducedMotion = useReducedMotion()
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
 
   useEffect(() => {
+    // Track small screens to tone down effects
+    const mq = window.matchMedia('(max-width: 768px)')
+    const update = () => setIsSmallScreen(mq.matches)
+    update()
+    mq.addEventListener?.('change', update)
+
     const onScroll = () => {
       if (!ticking.current) {
         ticking.current = true
@@ -21,13 +29,19 @@ export default function HeroSection() {
       }
     }
     window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      mq.removeEventListener?.('change', update)
+    }
   }, [])
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden mb-8">
+    <section id="home" className="cv-section relative min-h-screen flex items-center justify-center overflow-hidden mb-8">
       {/* Background Image with Parallax */}
-      <div className="absolute inset-0 z-0 transform-gpu will-change-transform" style={{ transform: `translateY(${scrollY * 0.5}px)` }}>
+      <div
+        className="absolute inset-0 z-0 transform-gpu will-change-transform"
+        style={{ transform: `translateY(${(prefersReducedMotion || isSmallScreen) ? 0 : scrollY * 0.5}px)` }}
+      >
         <Image
           src={heroCity}
           alt="Luxury Interior with Mosquito Net"
@@ -43,11 +57,12 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center transform-gpu will-change-transform">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          initial={false}
+          whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: isSmallScreen ? 0.4 : 0.55, delay: 0.12, ease: "easeOut" }}
           className="text-white"
         >
           <div className="flex items-center space-x-2 mb-6">
@@ -101,9 +116,10 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: "easeOut" }}
+          initial={false}
+          whileInView={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: isSmallScreen ? 0.4 : 0.55, delay: 0.2, ease: "easeOut" }}
           className="hidden lg:block"
         >
           <div className="relative">
@@ -127,16 +143,17 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator (responsive; small and offset on mobile) */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="flex absolute left-1/2 -translate-x-1/2 z-10"
+        style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 22px)' }}
       >
-        <div className="flex flex-col items-center text-white/70">
-          <span className="text-sm mb-2">Scroll to discover</span>
-          <ArrowDown className="w-5 h-5 animate-bounce" />
+        <div className="flex flex-col items-center text-white/70 pointer-events-none select-none">
+          <span className="text-[10px] md:text-sm mb-0.5 md:mb-2">Scroll to discover</span>
+          <ArrowDown className="w-3.5 h-3.5 md:w-5 md:h-5 animate-bounce" />
         </div>
       </motion.div>
     </section>

@@ -77,7 +77,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
 
             {/* Contact Info */}
-            <div className="mt-0 pt-1 border-t border-gray-100/80">
+            <div className="mt-3 pt-3 border-t border-gray-100/80">
               <a
                 href="tel:+49123456789"
                 className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-blue-50 to-blue-50/60 hover:from-blue-50 hover:to-blue-100 text-blue-700 font-medium rounded-lg transition-colors ring-1 ring-blue-100 shadow-sm"

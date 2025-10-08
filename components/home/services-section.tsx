@@ -1,15 +1,29 @@
 "use client"
 import { motion } from "framer-motion"
 import { Home, Building, Wrench, Phone, Sparkles, Clock } from "lucide-react"
+import Image from "next/image"
+import residentialImg from "@/public/images/residential-luxury.jpeg"
+import commercialImg from "@/public/images/commercial-modern.png"
+import installationImg from "@/public/images/installation-professional.jpeg"
 
-const services = [
+type ServiceColor = "blue" | "purple" | "green"
+interface Service {
+  icon: typeof Home
+  title: string
+  description: string
+  features: string[]
+  color: ServiceColor
+  image: any
+}
+
+const services: Service[] = [
   {
     icon: Home,
     title: "Residential Solutions",
     description: "Premium mosquito nets designed for luxury homes and apartments",
     features: ["Custom sizing", "Aesthetic integration", "Easy maintenance"],
     color: "blue",
-    image: "/images/residential-luxury.jpeg",
+    image: residentialImg,
   },
   {
     icon: Building,
@@ -17,7 +31,7 @@ const services = [
     description: "Large-scale installations for offices, hotels, and commercial spaces",
     features: ["Bulk installations", "Professional grade", "Warranty included"],
     color: "purple",
-    image: "/images/commercial-modern.png",
+    image: commercialImg,
   },
   {
     icon: Wrench,
@@ -25,7 +39,7 @@ const services = [
     description: "Expert installation services by certified technicians",
     features: ["Same-day service", "Precision fitting", "Quality guarantee"],
     color: "green",
-    image: "/images/installation-professional.jpeg",
+    image: installationImg,
   },
 ]
 
@@ -33,7 +47,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-16 bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 relative overflow-hidden"
+      className="cv-section py-16 bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
@@ -43,10 +57,10 @@ export default function ServicesSection() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.6, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-20"
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
@@ -62,7 +76,7 @@ export default function ServicesSection() {
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = service.icon
-            const colorClasses = {
+            const colorClasses: Record<ServiceColor, string> = {
               blue: "from-blue-600 to-cyan-600",
               purple: "from-purple-600 to-pink-600",
               green: "from-green-600 to-emerald-600",
@@ -71,17 +85,21 @@ export default function ServicesSection() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0.7, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden group border border-white/70"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.32), ease: "easeOut" }}
+                className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden group border border-white/70 transform-gpu will-change-transform"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.image || "/placeholder.svg"}
+                  <Image
+                    src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    placeholder="blur"
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    priority={index < 1}
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${colorClasses[service.color]} opacity-20`}></div>
                 </div>
@@ -112,11 +130,11 @@ export default function ServicesSection() {
 
         {/* Process Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.6, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 rounded-3xl p-12 text-white shadow-2xl"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 rounded-3xl p-12 text-white shadow-2xl transform-gpu will-change-transform"
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold mb-4">Our Simple Process</h3>

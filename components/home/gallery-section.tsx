@@ -2,50 +2,31 @@
 import { motion } from "framer-motion"
 import { Eye, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import heroCity from "@/public/images/hero-city.png"
+import landscapeWindow from "@/public/images/landscape-window.jpg"
+import womanReading from "@/public/images/woman-reading.jpg"
+import livingRoomWide from "@/public/images/living-room-wide.png"
+import livingVertical from "@/public/images/living-vertical.png"
+import windowMesh from "@/public/images/window-mesh.jpg"
 
 const galleryImages = [
-  { src: "/images/hero-city.png", title: "Modern City View", category: "Residential", span: "col-span-2 row-span-2" },
-  {
-    src: "/images/landscape-window.jpg",
-    title: "Garden Paradise",
-    category: "Luxury Home",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    src: "/images/woman-reading.jpg",
-    title: "Countryside Elegance",
-    category: "Premium",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    src: "/images/living-room-wide.png",
-    title: "Comfort Zone",
-    category: "Interior Design",
-    span: "col-span-2 row-span-1",
-  },
-  {
-    src: "/images/living-vertical.png",
-    title: "Minimal Luxury",
-    category: "Contemporary",
-    span: "col-span-1 row-span-2",
-  },
-  {
-    src: "/images/window-mesh.jpg",
-    title: "Mesh Protection",
-    category: "Window System",
-    span: "col-span-1 row-span-1",
-  },
+  { src: heroCity, title: "Modern City View", category: "Residential", span: "col-span-2 row-span-2" },
+  { src: landscapeWindow, title: "Garden Paradise", category: "Luxury Home", span: "col-span-1 row-span-1" },
+  { src: womanReading, title: "Countryside Elegance", category: "Premium", span: "col-span-1 row-span-1" },
+  { src: livingRoomWide, title: "Comfort Zone", category: "Interior Design", span: "col-span-2 row-span-1" },
+  { src: livingVertical, title: "Minimal Luxury", category: "Contemporary", span: "col-span-1 row-span-2" },
+  { src: windowMesh, title: "Mesh Protection", category: "Window System", span: "col-span-1 row-span-1" },
 ]
 
 export default function GallerySection() {
   return (
-    <section id="gallery" className="pt-16 pb-6 bg-gradient-to-br from-amber-50/50 via-orange-50/30 to-stone-100/40">
+    <section id="gallery" className="cv-section pt-16 pb-6 bg-gradient-to-br from-amber-50/50 via-orange-50/30 to-stone-100/40">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0.6, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           className="text-center mb-20"
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
@@ -63,18 +44,19 @@ export default function GallerySection() {
           {galleryImages.map((image, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0.7, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className={`relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/40 h-48 sm:h-56 lg:h-64`}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: Math.min(index * 0.06, 0.3), ease: "easeOut" }}
+              className={`relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/40 h-48 sm:h-56 lg:h-64 transform-gpu will-change-transform`}
             >
               <Image
-                src={image.src || "/placeholder.jpg"}
+                src={image.src}
                 alt={image.title}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover group-hover:scale-110 transition-transform duration-500"
+                placeholder="blur"
                 priority={index < 2}
               />
 
