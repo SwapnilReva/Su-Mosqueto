@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import { Eye, ArrowUpRight } from "lucide-react"
+import Image from "next/image"
 
 const galleryImages = [
   { src: "/images/hero-city.png", title: "Modern City View", category: "Residential", span: "col-span-2 row-span-2" },
@@ -68,14 +69,13 @@ export default function GallerySection() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className={`relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/40 h-48 sm:h-56 lg:h-64`}
             >
-              <img
+              <Image
                 src={image.src || "/placeholder.jpg"}
                 alt={image.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                onError={(e) => {
-                  const t = e.currentTarget as HTMLImageElement
-                  if (t.src.indexOf("placeholder") === -1) t.src = "/placeholder.jpg"
-                }}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-500"
+                priority={index < 2}
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

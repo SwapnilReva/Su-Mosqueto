@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Phone, Menu } from "lucide-react";
 import MobileMenu from "./MobileMenu";
+import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -20,12 +21,13 @@ export default function Header() {
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className="h-full w-[220px] md:w-[260px] overflow-hidden flex items-center cursor-pointer"
               >
-                <img
+                <Image
                   src="/images/su-mosquito-logo.png"
                   alt="Su Mosquito Net logo"
+                  width={220}
+                  height={60}
+                  priority
                   className="h-[60%] md:h-[62%] w-auto block -mt-1 md:-mt-2 shrink-0 select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges]"
-                  decoding="async"
-                  loading="eager"
                 />
               </button>
             </div>
