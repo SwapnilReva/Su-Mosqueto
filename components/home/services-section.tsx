@@ -1,0 +1,153 @@
+"use client"
+import { motion } from "framer-motion"
+import { Home, Building, Wrench, Phone, Sparkles, Clock } from "lucide-react"
+
+const services = [
+  {
+    icon: Home,
+    title: "Residential Solutions",
+    description: "Premium mosquito nets designed for luxury homes and apartments",
+    features: ["Custom sizing", "Aesthetic integration", "Easy maintenance"],
+    color: "blue",
+    image: "/images/residential-luxury.jpeg",
+  },
+  {
+    icon: Building,
+    title: "Commercial Projects",
+    description: "Large-scale installations for offices, hotels, and commercial spaces",
+    features: ["Bulk installations", "Professional grade", "Warranty included"],
+    color: "purple",
+    image: "/images/commercial-modern.png",
+  },
+  {
+    icon: Wrench,
+    title: "Professional Installation",
+    description: "Expert installation services by certified technicians",
+    features: ["Same-day service", "Precision fitting", "Quality guarantee"],
+    color: "green",
+    image: "/images/installation-professional.jpeg",
+  },
+]
+
+export default function ServicesSection() {
+  return (
+    <section
+      id="services"
+      className="py-16 bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 relative overflow-hidden"
+    >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-l from-indigo-400/20 to-cyan-400/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
+            Our Premium{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Services</span>
+          </h2>
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            From residential luxury to commercial excellence, we deliver tailored mosquito net solutions that exceed
+            expectations.
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => {
+            const IconComponent = service.icon
+            const colorClasses = {
+              blue: "from-blue-600 to-cyan-600",
+              purple: "from-purple-600 to-pink-600",
+              green: "from-green-600 to-emerald-600",
+            }
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300 overflow-hidden group border border-white/70"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${colorClasses[service.color]} opacity-20`}></div>
+                </div>
+
+                <div className="p-8">
+                  <div
+                    className={`w-16 h-16 bg-gradient-to-r ${colorClasses[service.color]} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}
+                  >
+                    <IconComponent className="w-8 h-8 text-white" />
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-slate-800 mb-4">{service.title}</h3>
+                  <p className="text-slate-600 mb-6 leading-relaxed">{service.description}</p>
+
+                  <div className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                        <span className="text-slate-700 font-medium">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Process Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-gradient-to-r from-slate-800 via-slate-900 to-slate-800 rounded-3xl p-12 text-white shadow-2xl"
+        >
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold mb-4">Our Simple Process</h3>
+            <p className="text-slate-300 text-lg">From consultation to installation, we make it effortless</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-semibold mb-2">1. Consultation</h4>
+              <p className="text-slate-300">Free consultation and precise measurements</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sparkles className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-semibold mb-2">2. Customization</h4>
+              <p className="text-slate-300">Tailored design to match your interiors</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8" />
+              </div>
+              <h4 className="text-xl font-semibold mb-2">3. Installation</h4>
+              <p className="text-slate-300">Professional same-day installation</p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
