@@ -25,22 +25,27 @@ export default function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      await createContact(formData) // Replace Contact.create with local API entity
-      // After successful submit, prepare WhatsApp message and open chat
-      const message = `New contact enquiry from Su Mosquito Net%0A%0A` +
-        `Name: ${formData.name}%0A` +
-        `Email: ${formData.email}%0A` +
-        `Phone: ${formData.phone || 'N/A'}%0A` +
-        `Service Type: ${formData.service_type}%0A` +
-        `Message: ${formData.message}`
+      // Build WhatsApp message first
+      const message = `New contact enquiry from Su Mosquito Net\n\n`
+        + `Name: ${formData.name}\n`
+        + `Email: ${formData.email}\n`
+        + `Phone: ${formData.phone || 'N/A'}\n`
+        + `Service Type: ${formData.service_type}\n`
+        + `Message: ${formData.message}`
 
       const whatsappNumber = '919909437575' // +91 9909437575 without plus or spaces
-      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(decodeURIComponent(message))}`
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
-      // Open WhatsApp in a new tab so the user isn't forced away from the site
+      // Open a blank tab synchronously (keeps user gesture) then set location
       if (typeof window !== 'undefined') {
-        window.open(waUrl, '_blank')
+        const waWin = window.open('about:blank', '_blank')
+        if (waWin) waWin.location.href = waUrl
       }
+
+      // Fire-and-forget API call; do not block the redirect
+      createContact(formData).catch((err) => {
+        console.error('Error submitting form:', err)
+      })
 
       setIsSubmitted(true)
       setFormData({
