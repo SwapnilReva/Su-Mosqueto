@@ -7,8 +7,8 @@ import landscapeWindow from "@/public/images/landscape-window.jpg"
 const features = [
   {
     icon: Shield,
-    title: "German Precision Engineering",
-    description: "Meticulously crafted with the highest quality German technology and attention to detail.",
+    title: "Advanced Insect Guard",
+    description: "Meticulously crafted with the highest quality technology and attention to detail.",
     color: "blue",
   },
   {
@@ -32,9 +32,9 @@ const features = [
 ]
 
 const stats = [
-  { number: "15+", label: "Years Experience" },
+  { number: "8+", label: "Years Experience" },
   { number: "1,000+", label: "Happy Customers" },
-  { number: "50+", label: "Cities Served" },
+  { number: "25+", label: "Cities Served" },
   { number: "99%", label: "Satisfaction Rate" },
 ]
 
@@ -58,7 +58,7 @@ export default function AboutSection() {
             ?
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Experience the perfect fusion of German engineering excellence and luxury design. Our premium mosquito nets
+            Experience the perfect fusion of top quality engineering excellence and luxury design. Our premium mosquito nets
             redefine protection with unmatched sophistication.
           </p>
         </motion.div>
@@ -137,7 +137,7 @@ export default function AboutSection() {
                 <Users className="w-8 h-8" />
                 <div>
                   <div className="text-2xl font-bold">Premium</div>
-                  <div className="text-blue-100">German Quality</div>
+                  <div className="text-blue-100">Quality</div>
                 </div>
               </div>
             </div>

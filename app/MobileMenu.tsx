@@ -79,12 +79,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Contact Info */}
             <div className="mt-3 pt-3 border-t border-gray-100/80">
               <a
-                href="tel:+49123456789"
+                href="tel:+91 9909437575"
                 className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-blue-50 to-blue-50/60 hover:from-blue-50 hover:to-blue-100 text-blue-700 font-medium rounded-lg transition-colors ring-1 ring-blue-100 shadow-sm"
                 onClick={onClose}
               >
                 <Phone className="w-5 h-5" />
-                <span>+49 123 456 789</span>
+                <span>+91 9909437575</span>
               </a>
             </div>
           </nav>

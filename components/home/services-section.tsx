@@ -30,7 +30,7 @@ const services: Service[] = [
     title: "Commercial Projects",
     description: "Large-scale installations for offices, hotels, and commercial spaces",
     features: ["Bulk installations", "Professional grade", "Warranty included"],
-    color: "purple",
+    color: "blue",
     image: commercialImg,
   },
   {
@@ -38,7 +38,7 @@ const services: Service[] = [
     title: "Professional Installation",
     description: "Expert installation services by certified technicians",
     features: ["Same-day service", "Precision fitting", "Quality guarantee"],
-    color: "green",
+    color: "blue",
     image: installationImg,
   },
 ]
@@ -65,7 +65,7 @@ export default function ServicesSection() {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
             Our Premium{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Services</span>
+            <span className="text-blue-600">Services</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             From residential luxury to commercial excellence, we deliver tailored mosquito net solutions that exceed

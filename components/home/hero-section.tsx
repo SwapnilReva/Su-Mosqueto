@@ -67,7 +67,7 @@ export default function HeroSection() {
         >
           <div className="flex items-center space-x-2 mb-6">
             <Award className="w-6 h-6 text-amber-400" />
-            <span className="text-amber-400 font-medium tracking-wide">GERMAN PRECISION</span>
+            <span className="text-amber-400 font-medium tracking-wide">INSECT SHIELD</span>
           </div>
 
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-8">
@@ -77,7 +77,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl lg:text-2xl text-slate-200 mb-10 leading-relaxed max-w-2xl">
-            Experience unparalleled protection with premium German-engineered mosquito nets that seamlessly blend with
+            Experience protection with premium engineered mosquito nets that seamlessly blend with
             your luxury interiors.
           </p>
 
@@ -86,8 +86,13 @@ export default function HeroSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-2xl transition-all duration-300"
+              type="button"
+              onClick={() => {
+                const el = document.querySelector('#services')
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
             >
-              Explore Our Products
+              Explore Now
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -110,7 +115,7 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center space-x-2">
               <Star className="w-6 h-6 text-yellow-400" />
-              <span className="text-slate-300">5-Star Quality</span>
+              <span className="text-slate-300">Top-Tier Quality</span>
             </div>
           </div>
         </motion.div>
@@ -135,7 +140,7 @@ export default function HeroSection() {
             />
             <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-xl">
               <div className="text-slate-800">
-                <div className="text-2xl font-bold">10,000+</div>
+                <div className="text-2xl font-bold">1000+</div>
                 <div className="text-slate-600">Happy Customers</div>
               </div>
             </div>

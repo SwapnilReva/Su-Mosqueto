@@ -72,12 +72,12 @@ export default function RootLayout({
                 <h3 className="font-semibold text-lg mb-2.5">Contact Info</h3>
                 <div className="space-y-1 text-slate-300">
                   <div>
-                    Phone: <a href="tel:+49123456789" className="hover:text-white/90 transition-colors">+49 123 456 789</a>
+                    Phone: <a href="tel:+91 9909437575" className="hover:text-white/90 transition-colors">+91 9909437575</a>
                   </div>
                   <div>
-                    Email: <a href="mailto:info@sumosquitonet.de" className="hover:text-white/90 transition-colors">info@sumosquitonet.de</a>
+                    Email: <a href="mailto:swapnil.reva1499@gmail.com" className="hover:text-white/90 transition-colors">swapnil.reva1499@gmail.com</a>
                   </div>
-                  <div>Address: Berlin, Germany</div>
+                  <div>Address: 131, Vishal Industrial society, U M Road, Surat, Gujrat 395007</div>
                 </div>
               </div>
             </div>

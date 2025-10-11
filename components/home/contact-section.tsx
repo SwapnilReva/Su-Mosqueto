@@ -26,6 +26,22 @@ export default function ContactSection() {
 
     try {
       await createContact(formData) // Replace Contact.create with local API entity
+      // After successful submit, prepare WhatsApp message and open chat
+      const message = `New contact enquiry from Su Mosquito Net%0A%0A` +
+        `Name: ${formData.name}%0A` +
+        `Email: ${formData.email}%0A` +
+        `Phone: ${formData.phone || 'N/A'}%0A` +
+        `Service Type: ${formData.service_type}%0A` +
+        `Message: ${formData.message}`
+
+      const whatsappNumber = '919909437575' // +91 9909437575 without plus or spaces
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(decodeURIComponent(message))}`
+
+      // Open WhatsApp in a new tab so the user isn't forced away from the site
+      if (typeof window !== 'undefined') {
+        window.open(waUrl, '_blank')
+      }
+
       setIsSubmitted(true)
       setFormData({
         name: "",
@@ -84,7 +100,7 @@ export default function ContactSection() {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
             Get in{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Touch</span>
+            <span className="text-blue-600">Touch</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Ready to transform your space? Contact us for a free consultation and let's discuss your premium mosquito
@@ -101,7 +117,7 @@ export default function ContactSection() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-3xl shadow-xl">
+            <div className="bg-blue-600 text-white p-8 rounded-3xl shadow-xl">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
 
               <div className="space-y-6">
@@ -109,7 +125,7 @@ export default function ContactSection() {
                   <Phone className="w-6 h-6 text-blue-200" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-blue-100">+49 123 456 789</p>
+                    <p className="text-blue-100">+91 9909437575</p>
                   </div>
                 </div>
 
@@ -117,7 +133,7 @@ export default function ContactSection() {
                   <Mail className="w-6 h-6 text-blue-200" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-blue-100">info@sumosquitonet.de</p>
+                    <p className="text-blue-100">swapnil.reva1499@gmail.com</p>
                   </div>
                 </div>
 
@@ -125,7 +141,7 @@ export default function ContactSection() {
                   <MapPin className="w-6 h-6 text-blue-200" />
                   <div>
                     <p className="font-medium">Address</p>
-                    <p className="text-blue-100">Berlin, Germany</p>
+                    <p className="text-blue-100">131, Vishal Industrial society, U M Road, Surat, Gujrat 395007</p>
                   </div>
                 </div>
               </div>
@@ -232,7 +248,7 @@ export default function ContactSection() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg font-semibold"
+                className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold"
               >
                 {isSubmitting ? (
                   <div className="flex items-center space-x-2">
