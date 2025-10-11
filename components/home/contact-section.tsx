@@ -36,10 +36,17 @@ export default function ContactSection() {
       const whatsappNumber = '919909437575' // +91 9909437575 without plus or spaces
       const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
-      // Open a blank tab synchronously (keeps user gesture) then set location
+      // Open WhatsApp. On iOS Safari, avoid about:blank (causes back to blank page)
       if (typeof window !== 'undefined') {
-        const waWin = window.open('about:blank', '_blank')
-        if (waWin) waWin.location.href = waUrl
+        const ua = navigator.userAgent || ''
+        const isIOS = /iPad|iPhone|iPod/.test(ua)
+        if (isIOS) {
+          // Open in the same tab so back returns to the site correctly
+          window.open(waUrl, '_self')
+        } else {
+          // Desktop/Android: open a new tab
+          window.open(waUrl, '_blank', 'noopener')
+        }
       }
 
       // Fire-and-forget API call; do not block the redirect
