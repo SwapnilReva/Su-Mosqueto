@@ -112,7 +112,7 @@ export default function ContactSection() {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
             Get in{" "}
-            <span className="text-blue-600">Touch</span>
+            <span className="text-[var(--brand-blue)]">Touch</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Ready to transform your space? Contact us for a free consultation and let's discuss your premium mosquito
@@ -129,7 +129,7 @@ export default function ContactSection() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="bg-blue-600 text-white p-8 rounded-3xl shadow-xl">
+            <div className="bg-[var(--brand-blue)] text-white p-8 rounded-3xl shadow-xl">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
 
               <div className="space-y-6">
@@ -260,7 +260,7 @@ export default function ContactSection() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold"
+                className="w-full h-14 bg-[var(--brand-blue)] hover:brightness-95 text-white text-lg font-semibold"
               >
                 {isSubmitting ? (
                   <div className="flex items-center space-x-2">

@@ -65,7 +65,7 @@ export default function ServicesSection() {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
             Our Premium{" "}
-            <span className="text-blue-600">Services</span>
+            <span className="text-[var(--brand-blue)]">Services</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             From residential luxury to commercial excellence, we deliver tailored mosquito net solutions that exceed

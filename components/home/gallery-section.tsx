@@ -31,7 +31,7 @@ export default function GallerySection() {
         >
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-800 mb-6">
             Stunning{" "}
-            <span className="text-blue-600">Transformations</span>
+            <span className="text-[var(--brand-blue)]">Transformations</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Witness how our premium mosquito nets elevate interior spaces while providing uncompromising protection.

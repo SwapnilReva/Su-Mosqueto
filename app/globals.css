@@ -10,6 +10,9 @@
   --header-from: oklch(0.98 0.002 240);
   --header-to: oklch(0.94 0.005 240);
 
+  /* Brand colors */
+  --brand-blue: #0ea5e9; /* temporary: Tailwind sky-500 close to logo; share exact hex to match perfectly */
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
