@@ -33,7 +33,7 @@ export default function ContactSection() {
         + `Service Type: ${formData.service_type}\n`
         + `Message: ${formData.message}`
 
-      const whatsappNumber = '919909437575' // +91 9909437575 without plus or spaces
+      const whatsappNumber = '919924763444' // 
       const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
       // Open WhatsApp. On iOS Safari, avoid about:blank (causes back to blank page)
@@ -137,7 +137,7 @@ export default function ContactSection() {
                   <Phone className="w-6 h-6 text-blue-200" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-blue-100">+91 9909437575</p>
+                    <p className="text-blue-100">+91 9924763444</p>
                   </div>
                 </div>
 

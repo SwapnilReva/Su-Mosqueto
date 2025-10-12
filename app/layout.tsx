@@ -72,7 +72,7 @@ export default function RootLayout({
                 <h3 className="font-semibold text-lg mb-2.5">Contact Info</h3>
                 <div className="space-y-1 text-slate-300">
                   <div>
-                    Phone: <a href="tel:+91 9909437575" className="hover:text-white/90 transition-colors">+91 9909437575</a>
+                    Phone: <a href="tel:+91 9924763444" className="hover:text-white/90 transition-colors">+91 9924763444</a>
                   </div>
                   <div>
                     Email: <a href="mailto:swapnil.reva1499@gmail.com" className="hover:text-white/90 transition-colors">swapnil.reva1499@gmail.com</a>

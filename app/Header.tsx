@@ -57,12 +57,12 @@ export default function Header() {
             <div className="flex items-center gap-3">
               {/* Phone (desktop only) */}
               <a
-                href="tel:+91 9909437575"
-                aria-label="Call us at +91 9909437575"
+                href="tel:+91 9924763444"
+                aria-label="Call us at +91 9924763444"
                 className="hidden md:inline-flex items-center gap-2 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-full text-blue-600 hover:text-blue-700 font-semibold whitespace-nowrap transition-all"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
-                <span>+91 9909437575</span>
+                <span>+91 9924763444</span>
               </a>
 
               {/* Hamburger (mobile only) */}
